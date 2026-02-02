@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { proyectos } from "../data/proyectos";
 import "aframe";
 
 export default function Home() {
@@ -25,21 +26,24 @@ export default function Home() {
         </a-assets>
 
         <a-entity position="-1 1.2 -2">
-          <a-camera look-controls="pointerLockEnabled: false" wasd-controls="acceleration: 20">
+          <a-camera 
+            look-controls="pointerLockEnabled: false"
+            wasd-controls="acceleration: 20">
           </a-camera>
         </a-entity>
 
         <a-entity
           id="kuka-model"
-          obj-model="obj: #kukaObj; mtl: #kukaMtl"
+          obj-model="obj: #kukaObj"
           position="0 1 -5"
           scale="0.01 0.01 0.01"
-          rotation="0 0 0"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear"
-        ></a-entity>
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear">
+        </a-entity>
 
         <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#1a1a1a"></a-plane>
-        <a-plane position="0 0.01 0" rotation="-90 0 0" width="20" height="20" material="color: #333; opacity: 0.3; wireframe: true"></a-plane>
+        <a-plane position="0 0.01 0" rotation="-90 0 0" width="20" height="20"
+          material="color: #333; opacity: 0.3; wireframe: true">
+        </a-plane>
 
         <a-light type="ambient" intensity="0.5"></a-light>
         <a-light type="directional" position="5 8 5" intensity="0.8"></a-light>
@@ -52,28 +56,10 @@ export default function Home() {
 
     containerRef.current.innerHTML = sceneHTML;
 
-    const setupEvents = () => {
-      const model = containerRef.current?.querySelector("#kuka-model");
-
-      if (model) {
-        model.addEventListener("model-loaded", () => {
-          console.log("✅ Modelo KUKA cargado correctamente");
-        });
-
-        model.addEventListener("model-error", (e) => {
-          console.error("❌ Error cargando modelo KUKA:", e);
-        });
-      }
-    };
-
-    setTimeout(setupEvents, 500);
-
     return () => {
       if (containerRef.current) {
         const scene = containerRef.current.querySelector("a-scene");
-        if (scene && scene.renderer) {
-          scene.renderer.dispose();
-        }
+        if (scene && scene.renderer) scene.renderer.dispose();
         containerRef.current.innerHTML = "";
       }
       sceneCreatedRef.current = false;
@@ -81,45 +67,103 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={{ width: "100vw", height: "100vh", overflow: "hidden", position: "relative" }}>
-      {/* OVERLAY INFO */}
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* OVERLAY */}
       <div
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
-          padding: "20px",
+          padding: "24px",
           zIndex: 10,
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.8), transparent)",
           color: "white",
           fontFamily: "Arial, sans-serif",
+          pointerEvents: "none",
         }}
       >
-        <h1>Entorno VR – KUKA</h1>
-        <p>Visualización del robot industrial KUKA en realidad virtual</p>
-        <button
-          onClick={() => navigate("/entorno")}
+        <h1 style={{ marginBottom: "8px" }}>Portafolio XR</h1>
+        <p style={{ opacity: 0.75 }}>
+          Proyectos en realidad virtual y gemelos digitales
+        </p>
+
+        {/* FLASHCARDS DINÁMICAS */}
+        <div
           style={{
-            background: "#133a5fb2",
-            color: "white",
-            border: "none",
-            padding: "10px 20px",
-            fontSize: "16px",
-            cursor: "pointer",
-            borderRadius: "5px",
-            marginTop: "10px",
+            display: "flex",
+            gap: "20px",
+            marginTop: "30px",
+            flexWrap: "wrap",
+            pointerEvents: "auto",
           }}
         >
-          Entrar al entorno VR
-        </button>
+          {Object.entries(proyectos).map(([id, proyecto]) => (
+            <ProjectCard
+              key={id}
+              title={proyecto.titulo}
+              description={proyecto.descripcion}
+              onClick={() => navigate(`/proyecto/${id}`)}
+
+
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Contenedor A-Frame */}
-      <div 
-        ref={containerRef} 
-        style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0 }}
+      {/* CONTENEDOR A-FRAME */}
+      <div
+        ref={containerRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
       />
+    </div>
+  );
+}
+
+/* ===================== */
+/* FLASHCARD COMPONENT   */
+/* ===================== */
+
+function ProjectCard({ title, description, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        width: "260px",
+        padding: "18px",
+        borderRadius: "14px",
+        background: "rgba(19, 58, 95, 0.85)",
+        backdropFilter: "blur(6px)",
+        cursor: "pointer",
+        boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
+        transition: "transform 0.25s ease, box-shadow 0.25s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-6px)";
+        e.currentTarget.style.boxShadow = "0 16px 35px rgba(0,0,0,0.7)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "0 10px 25px rgba(0,0,0,0.5)";
+      }}
+    >
+      <h3 style={{ marginBottom: "8px" }}>{title}</h3>
+      <p style={{ fontSize: "14px", opacity: 0.85 }}>{description}</p>
+      <div style={{ marginTop: "10px", fontSize: "12px", opacity: 0.6 }}>
+        Click para ver más →
+      </div>
     </div>
   );
 }
