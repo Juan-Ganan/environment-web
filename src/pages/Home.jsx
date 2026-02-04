@@ -19,7 +19,7 @@ export default function Home() {
         embedded 
         background="color: #0e0e0e"
         renderer="antialias: true; colorManagement: true"
-        vr-mode-ui="enabled: false"
+        vr-mode-ui="enabled: true"
       >
         <a-assets timeout="30000">
           <a-asset-item id="kukaObj" src="/models/KUKA.obj"></a-asset-item>
@@ -89,10 +89,12 @@ export default function Home() {
           pointerEvents: "none",
         }}
       >
-        <h1 style={{ marginBottom: "8px" }}>Portafolio XR</h1>
+        <h1 style={{ marginBottom: "8px" }}>Juan David Gañan </h1>
+        <div style={{ width: "40%", marginBottom: "16px" }}>
         <p style={{ opacity: 0.75 }}>
-          Proyectos en realidad virtual y gemelos digitales
+          Estudiante de Ingeniería de Sistemas y Computación, con experiencia en desarrollo web, robótica y aplicaciones interactivas. Mi trabajo se enfoca en el monitoreo de datos y en proyectos tecnológicos desarrollados desde el Laboratorio de Control Automático.
         </p>
+        </div>
 
         {/* FLASHCARDS DINÁMICAS */}
         <div

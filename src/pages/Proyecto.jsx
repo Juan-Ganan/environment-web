@@ -47,6 +47,15 @@ export default function Proyecto() {
         </button>
       )}
 
+      {proyecto.code && (
+        <button
+          onClick={() => window.open(proyecto.code, "_blank")}
+          style={{ ...btnStyle, background: "#444" }}
+        >
+          Ver código fuente
+        </button>
+      )}
+
       <br /><br />
 
       <button

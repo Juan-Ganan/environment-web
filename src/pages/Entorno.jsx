@@ -14,37 +14,29 @@ export default function Entorno() {
     if (!containerRef.current) return;
 
     const sceneHTML = `
-      <a-scene 
-        embedded 
-        background="color: #ECECEC"
-        renderer="antialias: true; colorManagement: true"
-        vr-mode-ui="enabled: false"
-      >
-        <a-assets timeout="30000">
-          <a-asset-item id="abbObj" src="/models/abb_trafo.obj"></a-asset-item>
-          <a-asset-item id="abbMtl" src="/models/abb_trafo.mtl"></a-asset-item>
-        </a-assets>
+            <a-scene
+            background="color: #ECECEC"
+            renderer="antialias: true"
+            vr-mode-ui="enabled: true"
+            >
+            <a-assets>
+                <a-asset-item id="obj" src="/models/abb_trafo.obj"></a-asset-item>
+                <a-asset-item id="mtl" src="/models/abb_trafo.mtl"></a-asset-item>
+            </a-assets>
 
-        <a-entity position="0 1.6 3">
-          <a-camera 
-            look-controls="pointerLockEnabled: false" 
-            wasd-controls="acceleration: 15">
-          </a-camera>
-        </a-entity>
+            <!-- MODELO -->
+            <a-entity
+                obj-model="obj: #obj; mtl: #mtl"
+                position="0 0 -3"
+                scale="0.01 0.01 0.01"
+                rotation="-90 180 0">
+            </a-entity>
 
-        <a-entity
-          id="trafo-model"
-          obj-model="obj: #abbObj; mtl: #abbMtl"
-          position="0 0 -3"
-          scale="0.01 0.01 0.01"
-          rotation="-90 180 0"
-        ></a-entity>
+            <!-- LUCES -->
+            <a-light type="ambient" intensity="1"></a-light>
+            <a-light type="directional" position="1 3 2" intensity="0.8"></a-light>
 
-        <a-light type="ambient" intensity="1"></a-light>
-        <a-light type="directional" position="1 3 2" intensity="0.8"></a-light>
-
-        <a-sky color="#87CEEB"></a-sky>
-      </a-scene>
+            </a-scene>
     `;
 
     containerRef.current.innerHTML = sceneHTML;
