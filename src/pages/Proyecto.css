@@ -1,0 +1,194 @@
+/* Proyecto.css - Estilos adicionales y animaciones */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Scrollbar personalizado */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Efectos hover para botones */
+.btn-volver:hover {
+  background: #1a1a1a !important;
+  border-color: #555 !important;
+  color: #fff !important;
+}
+
+.tab:hover:not(.tab-activa) {
+  background: #1a1a1a;
+  border-color: #444;
+  color: #aaa;
+}
+
+.tecnologia-card:hover {
+  transform: translateY(-2px);
+  border-color: #555;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.btn-copiar:hover {
+  background: #1e5a8f !important;
+  transform: scale(1.05);
+}
+
+.btn-accion:hover {
+  background: #1e5a8f !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(19, 58, 95, 0.4);
+}
+
+.btn-accion-secundario:hover {
+  background: #222 !important;
+  border-color: #555 !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Asegurar que la columna de info esté por encima */
+.columna-info {
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+/* Asegurar que el visor 3D esté detrás */
+.visor-3d {
+  z-index: 1 !important;
+}
+
+/* Lista con bullets personalizados */
+.lista-item::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #133a5f;
+  font-weight: bold;
+}
+
+/* Imagen hover effect */
+.imagen-wrapper:hover .imagen,
+.imagen-wrapper:hover video {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.imagen-wrapper {
+  transition: all 0.3s ease;
+}
+
+.imagen-wrapper:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+}
+
+/* Lightbox styles */
+.btn-cerrar-lightbox:hover,
+.btn-nav-lightbox:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.1);
+}
+
+/* Video icon overlay */
+.video-icon {
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.imagen-wrapper:hover .video-icon {
+  opacity: 0.7;
+}
+
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .columna-info {
+    width: 50% !important;
+  }
+  
+  .visor-3d {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .columna-info {
+    width: 100% !important;
+  }
+  
+  .visor-3d {
+    display: none !important;
+  }
+  
+  .tabs {
+    flex-wrap: wrap;
+  }
+  
+  .tab {
+    flex: 1 1 45%;
+  }
+  
+  .tecnologias-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .galeria {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .acciones-footer {
+    flex-direction: column !important;
+  }
+  
+  .btn-accion,
+  .btn-accion-secundario {
+    width: 100% !important;
+  }
+}
+
+/* Loading state */
+.loading-placeholder {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              color 0.3s ease;
+}
