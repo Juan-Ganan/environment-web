@@ -518,21 +518,12 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para má
 
 **Tu Nombre** - [tu-email@example.com](mailto:tu-email@example.com)
 
-GitHub: [@tu-usuario](https://github.com/tu-usuario)  
-LinkedIn: [Tu Nombre](https://linkedin.com/in/tu-nombre)  
-Portfolio: [tu-portfolio.com](https://tu-portfolio.com)
+GitHub: [@juan-ganan](https://github.com/juan-ganan)  
+**Portfolio: [tu-portfolio.com](https://tu-portfolio.com)**
 
 ---
 
-## 🙏 Agradecimientos
 
-- [A-Frame](https://aframe.io/) - Framework de VR
-- [Three.js](https://threejs.org/) - Motor 3D
-- [React](https://reactjs.org/) - Framework de UI
-- [Vercel](https://vercel.com/) - Hosting
-- Comunidad de desarrolladores de código abierto
-
----
 
 ## 🔄 Changelog
 
