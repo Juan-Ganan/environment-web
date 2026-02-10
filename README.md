@@ -516,10 +516,9 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para má
 
 ## 👤 Contacto
 
-**Tu Nombre** - [tu-email@example.com](mailto:tu-email@example.com)
+**Juan David Gañan** - [juan.ganan@utp.edu.co](mailto:juan.ganan@utp.edu.co)
 
 GitHub: [@juan-ganan](https://github.com/juan-ganan)  
-**Portfolio: [tu-portfolio.com](https://tu-portfolio.com)**
 
 ---
 
