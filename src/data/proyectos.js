@@ -79,7 +79,7 @@ export const proyectos = {
       ],
       
       imagenes: [
-        { tipo: "imagen", url: "/images/Bicineta_general.jpeg", descripcion: "Dashboard principal" },
+        { tipo: "imagen", url: "/images/Bicineta_general.jpeg", descripcion: "Bicineta en la Vida Real" },
         { tipo: "video", url: "/videos/bicineta-demo.mp4", descripcion: "Demo de la aplicación en uso" },
         { tipo: "imagen", url: "/images/Mapa.png", descripcion: "Vista del mapa de rutas" },
         { tipo: "imagen", url: "/images/Gemelo_Digital.png", descripcion: "Estadísticas de uso" }
